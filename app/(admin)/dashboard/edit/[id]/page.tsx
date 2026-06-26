@@ -16,8 +16,8 @@ export default async function EditPoemPage({ params }: { params: { id: string } 
   if (!poem) redirect("/dashboard/poems");
 
   return (
-    <div className="p-8">
-      <h1 className="text-3xl font-bold mb-8">Edit Poem</h1>
+    <div className="p-0 sm:p-1 lg:p-2">
+      <h1 className="mb-6 text-2xl font-bold sm:text-3xl">Edit Poem</h1>
       <CreatePoemForm initialData={poem} />
     </div>
   );

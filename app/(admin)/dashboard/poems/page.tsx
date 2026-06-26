@@ -15,12 +15,12 @@ export default async function PoemsPage() {
     .order("created_at", { ascending: false });
 
   return (
-    <div className="p-8">
-      <div className="flex justify-between items-center mb-6">
-        <h1 className="text-3xl font-bold">My Poems</h1>
+    <div className="space-y-4">
+      <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+        <h1 className="text-2xl font-bold sm:text-3xl">My Poems</h1>
         <Link
           href="/dashboard/create"
-          className="flex items-center gap-2 px-4 py-2 bg-black text-white rounded hover:bg-gray-800"
+          className="flex items-center justify-center gap-2 rounded-lg bg-black px-4 py-2 text-white transition hover:bg-gray-800"
         >
           <Plus size={16} />
           New Poem
@@ -28,22 +28,24 @@ export default async function PoemsPage() {
       </div>
 
       {!poems || poems.length === 0 ? (
-        <p className="text-neutral-600">No poems yet. Create your first poem!</p>
+        <p className="rounded-xl border border-dashed border-neutral-300 p-6 text-neutral-600 dark:border-neutral-700 dark:text-neutral-400">
+          No poems yet. Create your first poem!
+        </p>
       ) : (
-        <div className="overflow-x-auto">
-          <table className="w-full border-collapse">
+        <div className="overflow-x-auto rounded-xl border border-neutral-200 bg-white dark:border-neutral-800 dark:bg-neutral-900">
+          <table className="min-w-full border-collapse">
             <thead>
-              <tr className="border-b">
-                <th className="text-left p-3 font-semibold">Title</th>
-                <th className="text-left p-3 font-semibold">Created</th>
-                <th className="text-right p-3 font-semibold">Actions</th>
+              <tr className="border-b border-neutral-200 dark:border-neutral-800">
+                <th className="p-3 text-left font-semibold">Title</th>
+                <th className="p-3 text-left font-semibold">Created</th>
+                <th className="p-3 text-right font-semibold">Actions</th>
               </tr>
             </thead>
             <tbody>
               {poems.map((poem: any) => (
-                <tr key={poem.id} className="border-b hover:bg-gray-50">
+                <tr key={poem.id} className="border-b border-neutral-200 text-sm hover:bg-gray-50 dark:border-neutral-800 dark:hover:bg-neutral-800/50">
                   <td className="p-3">{poem.title}</td>
-                  <td className="p-3 text-sm text-neutral-600">
+                  <td className="p-3 text-neutral-600 dark:text-neutral-400">
                     {new Date(poem.created_at).toLocaleDateString()}
                   </td>
                   <td className="p-3 text-right">
